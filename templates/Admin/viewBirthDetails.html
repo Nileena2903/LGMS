@@ -1,0 +1,48 @@
+{% extends 'Admin/Adminindex1.html' %}
+{% block body%}
+
+<body>
+<form action="/myapp/viewBirthdetails_post/" method="post">
+{% csrf_token %}
+ <center><h3><b>CERTIFICATE DETAILS</b></h3></center></table> <br><br>
+
+<table class="table table-hover">
+
+    <tr>
+    <th width="32" scope="row">sl.no</th>
+    <th width="39">Name of Child</th>
+    <th width="39">Date of Birth</th>
+    <th width="39">Gender</th>
+    <th width="34">Mother's Name</th>
+    <th width="34">Father's Name</th>
+    <th width="34">Hospital's Name</th>
+    <th width="34">Register Number</th>
+    <th width="34">District</th>
+    <th width="47">Status</th>
+        <th></th>
+
+
+  </tr>
+     {% for i in data2 %}
+ <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.Name }}<br></td>
+    <td>{{ i.Gender }}</td>
+    <td>{{ i.Dob }}</td>
+      <td>{{ i.Mother }}</td>
+    <td>{{ i.Father }}</td>
+    <td>{{ i.Hospital }}</td>
+    <td>{{ i.Regno }}</td>
+    <td>{{ i.Dist }}</td>
+    <td>{{ i.Status }}</td>
+  {% if i.Status == "verified"%}
+    <td><a href="/myapp/admin_approveCertificate/{{ i.id }}" class="btn btn-outline-success" >Generate</a></td>
+    <td><a href="/myapp/staff_rejectBirthapplications/{{ i.id }}"class="btn btn-outline-danger">Reject</a></td>
+  {% endif %}
+  </tr>
+     {% endfor %}
+</table>
+
+</form>
+</body>
+{% endblock %}

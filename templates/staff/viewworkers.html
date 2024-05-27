@@ -1,0 +1,29 @@
+{% extends 'staff/staffindex1.html' %}
+{% block body %}
+<body>
+<form action="/myapp/workallocationpost/" method="post">
+{% csrf_token %}
+
+<input type="hidden" name="wid" value="{{ id }}">
+
+<table class="table table-bordered">
+  <tr>
+    <th width="31" scope="row">sl.no</th>
+    <th width="54">Name</th>
+    <th width="45">photo</th>
+    <th width="45">Select</th>
+  </tr>
+  {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.JOBCARD.USER.Uname }}</td>
+    <td><img src="{{ i.JOBCARD.USER.Photo }}" height="90px" width="90px"></td>
+    <td><input type="checkbox" name="selected_items" value="{{ i.id }}"></td>
+  </tr>
+  {% endfor %}
+</table>
+
+<input type="submit" value="Submit">
+</form>
+</body>
+{% endblock %}

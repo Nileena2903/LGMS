@@ -1,0 +1,29 @@
+{% extends 'wardmember/memberindex1.html' %}
+{% block body%}
+
+<body>
+<form action="/myapp/sendPlanReq_post/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ id }}">
+  <table class="table table-active">
+    <center><h3><b>SEND PLAN REQUEST</b></h3></center></table> <br><br>
+    <table class="table table-hover">
+    <tr>
+      <th scope="row">Start Date</th>
+      <td><label>
+        <input type="Date"class="form-control" min="{{ dt }} "required  name="sdate"  />
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">End Date</th>
+      <td><label>
+         <input type="Date"class="form-control" min="{{ dt }}" required  name="edate"  />
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Send" class="btn btn-outline-success" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

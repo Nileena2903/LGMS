@@ -1,0 +1,28 @@
+{% extends 'staff/staffindex1.html' %}
+{% block body %}
+<body>
+<form action="/myapp/workallocationpost/" method="post">
+{% csrf_token %}
+
+<input type="hidden" name="wid" value="{{ id }}">
+
+<table class="table table-bordered">
+  <tr>
+    <th width="31" scope="row">sl.no</th>
+    <th width="54">Head</th>
+      <th width="54">Name</th>
+    <th width="45">Card/No</th>
+  </tr>
+  {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.Head}}</td>
+    <td>{{ i.Name}}</td>
+    <td>{{ i.Cardno}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{#<td><a href="/myapp/staff_approvewrkrequest/{{ i.id }}" class="btn btn-success">Submit</a> </td>#}
+</form>
+</body>
+{% endblock %}

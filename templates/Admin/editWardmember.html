@@ -1,0 +1,100 @@
+{% extends 'Admin/Adminindex1.html' %}
+{% block body%}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/editWardmember_post/" enctype="multipart/form-data">
+{% csrf_token %}
+<table class="table table-active">
+    <center><h3><b>EDIT WARD MEMBER</b></h3></center></table> <br><br>
+  <input type="hidden" name="id" value="{{ data.id }}">
+  <table class="table table-bordered">
+  <tr>
+       <th scope="row">Ward</th>
+     <td><label>
+         <select name="select" class="form-control" required>
+             {% for i in data1 %}
+                 <option  value="{{ i.id }}">{{ i.Wname }}</option>
+             {% endfor %}
+
+        </select>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row"> Name </th>
+      <td><label>
+        <input type="text" name="textfield1" value="{{ data.Mname }}" class="form-control"/>
+      </label></td>
+    </tr>
+	 <tr>
+      <th scope="row">Phone</th>
+     <td><label>
+        <input type="text" name="textfield2" value="{{ data.Phno }}" class="form-control"/>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+     <td><label>
+        <input type="text" name="textfield3"value="{{ data.Email }}" class="form-control"/>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Gender</th>
+      <td><label>
+        <input name="radiobutton" type="radio" value="Male" {% if data.Gender == 'Male' %}checked{% endif %} />
+      Male 
+      <input name="radiobutton" type="radio" value="Female"{% if data.Gender == 'Female' %}checked{% endif %} />
+      Female
+      <input name="radiobutton" type="radio" value="Other"{% if data.Gender == 'Other' %}checked{% endif %} />
+      Other
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">DOB</th>
+     <td><label>
+        <input type="date" name="textfield4"class="form-control" value="{{ data.Dob|date:"Y-m-d" }}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Designation </th>
+    <td><select name="select2"class="form-control" required>
+        <option>President</option>
+         <option>Vice President</option>
+         <option>Member</option>
+         <option>Standing Committee Chairman</option>
+        <option>Office Staff</option>
+    </select></td>
+    </tr>
+      <tr>
+      <th scope="row" >Post</th>
+        <td><input type="text" name="textfield5"value="{{ data.Post }}" class="form-control" /></td>
+    </tr>
+{#	 <tr>#}
+{#      <th scope="row">City</th>#}
+{#      <td><label>#}
+{#        <input type="text" name="textfield6" />#}
+{#      </label></td>#}
+{#    </tr>#}
+	 <tr>
+      <th scope="row">Pin</th>
+      <td><label>
+        <input type="text" name="textfield7"value="{{ data.Pin }}" class="form-control"/>
+      </label></td>
+    </tr>
+
+    <tr>
+      <th scope="row">Photo</th>
+      <td>&nbsp;<input type="file" name="file" />
+            <img src="{{ data.Photo }}" height="100" width="100" alt=""/></td>
+    </tr>
+    <tr>
+	
+      <th colspan="2" scope="row"><div align="center">
+        <label>
+        <input type="submit" name="Submit"class="btn btn-success" value="Update" />
+        </label>
+      </div></th>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

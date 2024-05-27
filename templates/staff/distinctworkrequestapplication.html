@@ -1,0 +1,147 @@
+
+
+
+
+{% extends 'staff/staffindex1.html' %}
+{% block body%}
+
+<body>
+<form action="/myapp/approvedstaffviewworkreqapply_post/" method="post">
+{#<table class="table table-active">#}
+{#  <tr>#}
+{#    <th width="35" scope="row">From</th>#}
+{#    <td width="144"><label>#}
+{#      <input type="date" name="textfield" class="form-control" />#}
+{#    </label></td>#}
+{#    <th width="35">To</th>#}
+{#    <td width="144"><input type="date" name="textfield2" class="form-control"/></td>#}
+{#    <td ><label>#}
+{#      <input type="submit" name="Submit" value="Search" class="btn btn-style-primary"/>#}
+{#    </label></td>#}
+{#  </tr>#}
+{#</table>#}
+<table class="table table-hover">
+  <tr>
+    <th width="31" scope="col">sl.no</th>
+    <th width="31" scope="col">Date</th>
+    <th width="31" scope="col">Area</th>
+    <th width="31" scope="col">Cardno</th>
+    <th width="31" scope="col">Head</th>
+{#    <th width="28" scope="col">Total Request</th>#}
+{#    <th width="28" scope="col">Total Workers</th>#}
+
+  </tr>
+     {% for i in data %}
+  <tr>
+
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.Date }}</td>
+    <td>{{ i.Area }}</td>
+    <td>{{ i.Cardno }}</td>
+    <td>{{ i.Head }}</td>
+
+  </tr>
+     {% endfor %}
+
+
+<tr>
+    <td style="color: #0a53be">Total Work Area:{{ area }}</td>
+    <td style="color: #0a53be">Total Workers:{{ emp }}</td>
+    {% if resEmcount == emp %}
+     <td><a href="/myapp/staff_approvewrkrequest/{{ wid }}" class=" btn btn-success">Approve</a></td>
+        {%else%}
+            <td style="color: #0a53be">Available Workers:{{ resEmcount }}</td><td></td><td></td>
+
+
+    {% endif %}
+</tr>
+</table>
+</form>
+</body>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#{% extends 'staff/staffindex1.html' %}#}
+{#{% block body%}#}
+{##}
+{#<body>#}
+{#<form action="/myapp/staffviewworkreqapply_post/" method="post">#}
+{#<table class="table table-active">#}
+{#  <tr>#}
+{#    <th width="35" scope="row">From</th>#}
+{#    <td width="144"><label>#}
+{#      <input type="date" name="textfield" class="form-control" />#}
+{#    </label></td>#}
+{#    <th width="35">To</th>#}
+{#    <td width="144"><input type="date" name="textfield2" class="form-control"/></td>#}
+{#    <td ><label>#}
+{#      <input type="submit" name="Submit" value="Search" class="btn btn-style-primary"/>#}
+{#    </label></td>#}
+{#  </tr>#}
+{#</table>#}
+{#<table class="table table-hover">#}
+{#  <tr>#}
+{#    <th width="31" scope="col">sl.no</th>#}
+{#    <th width="31" scope="col">Date</th>#}
+{#    <th width="28" scope="col">Scheme</th>#}
+{#    <th width="28" scope="col">user</th>#}
+{#    <th width="28" scope="col">Area</th>#}
+{#    <th width="28" scope="col">TaxReciept</th>#}
+{#    <th width="39" scope="col">Ward</th>#}
+{#    <th width="37" scope="col">Head </th>#}
+{#    <th width="37" scope="col">Rationcard Number </th>#}
+{#    <th width="37" scope="col">Rationcard Photo</th>#}
+{#    <th width="54" scope="col">&nbsp;</th>#}
+{#    <th width="94" scope="col">&nbsp;</th>#}
+{#    <th width="94" scope="col">&nbsp;</th>#}
+{#  </tr>#}
+{#     {% for i in data %}#}
+{#  <tr>#}
+{##}
+{#    <td>{{ forloop.counter }}</td>#}
+{#    <td>{{ i.Date }}</td>#}
+{#    <td>&nbsp;{{ i.SCHEME.Scheme }}</td>#}
+{#    <td>{{ i.JOBCARD.USER.Uname }}</td>#}
+{#  <td>{{ i.Area }}</td>#}
+{#  <td><img src="{{ i.Taxreciept }}"height="100px" width="100px"> </td>#}
+{#    <td>&nbsp;{{ i.JOBCARD.USER.WARD.Wnum }}</td>#}
+{#    <td><img src="{{ i.Photo }}" height="50px" width="50px"><br>{{ i.Head }}</td>#}
+{#    <td>{{ i.JOBCARD.Rationcard }}</td>#}
+{#    <th><img src="{{ i.JOBCARD.Idproof }}" height="50px" width="50px"><br>#}
+{#     <a href="{{ i.Idproof }}" download>view</a> </th>#}
+{#      <td><a href="/myapp/viewjobcarddetails/{{ i.id }}" class="btn btn-outline-dark" >details</a></td>#}
+{#      {% if i.Status == "pending"%}#}
+{#    <td><a href="/myapp/approveworkreq/{{ i.id }}" class="btn btn-outline-success" >Verify</a></td>#}
+{#    <td><a href="/myapp/rejectworkreq/{{ i.id }}"class="btn btn-outline-danger">Reject</a></td>#}
+{#  {% endif %}#}
+{#  </tr>#}
+{#     {% endfor %}#}
+{#</table>#}
+{#</form>#}
+{#</body>#}
+{#{% endblock %}#}

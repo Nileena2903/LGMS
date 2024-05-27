@@ -1,0 +1,100 @@
+{% extends 'Admin/Adminindex1.html' %}
+{% block body%}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/addstaff_post/" enctype="multipart/form-data">
+{% csrf_token %}
+ <table class="table table-active">
+    <center><h3><b>ADD STAFF</b></h3></center></table> <br><br>
+  <table class="table table-active">
+      <tr>
+       <th scope="row">Department</th>
+     <td><label>
+         <select name="select" required class="form-control">
+             {% for i in data %}
+             <option value="{{ i.id }}">
+             {{ i.Dname }}
+             </option>{% endfor %}
+        </select>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row"> Name </th>
+      <td><label>
+        <input type="text" name="textfield"class="form-control" onchange="capitalizeFirstLetter(this)" title="Please enter full name"  required pattern="[a-zA-Z]+ [a-zA-Z ]+"/>
+      </label></td>
+    </tr>
+	 <tr>
+      <th scope="row">Phone</th>
+     <td><label>
+        <input type="text" name="textfield1"class="form-control"  minlength="10" maxlength="10" title="Please enter a 10-digit phone number" required />
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+     <td><label>
+        <input type="text" name="textfield2"class="form-control" pattern="[a-z_0-9]{2,30}[@][a-z]{2,10}[.][a-z.]{2,20}"title="eg" required />
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Gender</th>
+      <td><label>
+        <input name="radiobutton" type="radio" value="male" checked/>
+      Male 
+      <input name="radiobutton" type="radio" value="female"  />
+      Female
+      <input name="radiobutton" type="radio" value="other"  />
+      Other
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">DOB</th>
+     <td><label>
+        <input type="date" name="textfield3"class="form-control"required/>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Post</th>
+      <td><label>
+        <input type="text" name="textfield4"class="form-control" onchange="capitalizeFirstLetter(this)" required />
+      </label></td>
+    </tr>
+	 <tr>
+      <th scope="row">Designation</th>
+    <td><select name="textfield5"class="form-control" required>
+        <option>Secretary</option>
+         <option>Section officer</option>
+         <option>clerk</option>
+    </select></td>
+    </tr>
+	 <tr>
+      <th scope="row">Pin</th>
+      <td><label>
+        <input type="text" name="textfield6"class="form-control" maxlength="6" pattern="\d{6}" title="Enter valid pincode" required />
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Photo</th>
+      <td> <input type="file" name="file"class="form-control" accept="image/*" required /></td>
+    </tr>
+    <tr>
+	
+      <td colspan="2" align="center">
+        <input type="submit" name="Submit" value="Add"class="btn btn-outline-success" />
+     </td>
+    </tr>
+  </table>
+</form>
+
+<script>
+    function capitalizeFirstLetter(inputElement) {
+        // Get the value of the input field
+        var value = inputElement.value;
+        // Capitalize the first letter
+        var capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+        // Update the input field with the capitalized value
+        inputElement.value = capitalizedValue;
+    }
+</script>
+
+</body>
+{% endblock %}

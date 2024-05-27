@@ -1,0 +1,39 @@
+{% extends 'Admin/Adminindex1.html' %}
+{% block body%}
+
+<body>
+<form action="/myapp/editPlans_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-active">
+    <center><h3><b>EDIT PLAN</b></h3></center></table> <br><br>
+     <input type="hidden" name="id" value="{{ data.id }}">
+  <table class="table table-hover">
+    <tr>
+      <th scope="row">Plan </th>
+      <td><label>
+        <input type="text" value="{{ data.Plan }}" name="plan" class="form-control" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td><label>
+        <textarea name="description" class="form-control"required>{{ data.Desc }}</textarea>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Photo</th>
+      <td><label>
+        <input type="file" accept="image/*"  name="file" class="form-control" />
+           <img src="{{ data.Photo }}" height="100" accept="image/*"width="100" alt=""/>
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Update" class="btn btn-outline-success" /></td>
+    </tr>
+  </table>
+
+
+  <label></label>
+</form>
+</body>
+{% endblock %}

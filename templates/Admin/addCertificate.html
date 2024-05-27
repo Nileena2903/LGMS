@@ -1,0 +1,50 @@
+{% extends 'Admin/Adminindex1.html' %}
+{% block body%}
+<body>
+<form action="/myapp/addCertificate_post/" method="post">
+{% csrf_token %}
+ <table class="table table-active">
+    <center><h3><b>ADD SERVICE</b></h3></center></table> <br><br>
+<table class="table table-active">
+  <tr>
+    <th scope="col">Certificate category </th>
+    <th scope="col"><label>
+      <input type="text" name="category"onchange="capitalizeFirstLetter(this)"  class="form-control" required/>
+    </label></th></tr>
+      <tr>
+         <th scope="col">Description</th>
+    <th scope="col"><label>
+      <input type="text" name="description" onchange="capitalizeFirstLetter(this)" class="form-control" required/>
+    </label></th>
+  </tr>
+    <tr>
+       <th scope="row">Department</th>
+     <td ><label>
+         <select name="select" required class="form-control" >
+             {% for i in data %}
+             <option value="{{ i.id }}">
+             {{ i.Dname }}
+             </option>{% endfor %}
+        </select>
+      </label></td>
+    </tr>
+  <tr>
+    <td colspan="2" align="center"><label>
+        <input  type="submit" name="Submit" class="btn btn-outline-success"value="Add" />
+    </label></td>
+    </tr>
+</table>
+
+</form>
+<script>
+    function capitalizeFirstLetter(inputElement) {
+        // Get the value of the input field
+        var value = inputElement.value;
+        // Capitalize the first letter
+        var capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+        // Update the input field with the capitalized value
+        inputElement.value = capitalizedValue;
+    }
+</script>
+</body>
+{% endblock %}

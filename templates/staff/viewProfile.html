@@ -1,0 +1,45 @@
+{% extends 'staff/staffindex1.html' %}
+{% block body%}
+<body>
+<form>
+     {% csrf_token %}
+    <table class="table table-active">
+    <center><h3><b>My Profile</b></h3></center></table> <br><br>
+    <table class=" table table-hover">
+        <tr><th></th>
+            <td> <img src="{{ data.Photo }}" height="100" width="100" alt=""/>
+</td>
+        </tr>
+        <tr><th>Name</th>
+            <td>{{ data.Sname }}
+</td></tr>
+         <tr><th>Designation</th>
+            <td>{{ data.Designation }}
+</td></tr>
+        <tr><th>Department</th>
+            <td>{{ data.DEPARTMENT.Dname }}
+</td></tr>
+        <tr><th>Phone</th>
+            <td>{{ data.Phno }}
+</td></tr>
+       <tr><th>Email</th>
+           <td>{{ data.Email }}
+</td></tr>
+
+      <tr><th>DOB</th>
+          <td>{{ data.Dob }}
+</td></tr>
+
+<tr><th>Gender</th>
+    <td>{{ data.Gender }}
+</td></tr>
+        <tr><th>Post</th>
+            <td>{{ data.Post }}
+</td></tr>
+        <tr><th>Pin</th>
+            <td>{{ data.Pin }}
+</td></tr>
+    </table>
+</form>
+</body>
+{% endblock %}

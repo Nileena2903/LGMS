@@ -1,0 +1,42 @@
+{% extends 'Admin/Adminindex1.html' %}
+{% block body%}
+
+<body>
+<form action="/myapp/editCertificate_post/" method="post">
+{% csrf_token %}
+<table class="table table-active">
+    <center><h3><b>EDIT SERVICE</b></h3></center></table> <br><br>
+ <input type="hidden" name="id" value="{{ data.id }}">
+<table class="table table-bordered">
+  <tr>
+    <th scope="col">Certificate category </th>
+    <th scope="col"><label>
+      <input type="text" name="category"value="{{ data.Category }}" class="form-control"/>
+    </label></th></tr>
+      <tr>
+         <th scope="col">Description</th>
+    <th scope="col"><label>
+      <input type="text" name="description" value="{{ data.Desc}}" class="form-control"/>
+    </label></th>
+  </tr>
+    <tr>
+       <th scope="row">Department</th>
+     <td><label>
+        <select name="select" required class="form-control">
+             {% for i in data2 %}
+             <option value="{{ i.id }}"{% if data.DEPARTMENT.id == i.id %}selected{% endif %}>
+             {{ i.Dname }}
+             </option>{% endfor %}
+        </select>
+      </label></td>
+    </tr>
+  <tr>
+    <td colspan="2"align="center"><label>
+        <input type="submit" name="Submit" class="btn btn-success" value="Update" />
+    </label></td>
+    </tr>
+</table>
+
+</form>
+</body>
+{% endblock %}

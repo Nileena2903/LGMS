@@ -1,0 +1,36 @@
+{% extends 'Admin/Adminindex1.html' %}
+{% block body%}
+
+<body>
+<form action="#" method="post">
+<table class="table table-active">
+  <tr>
+    <th width="35" scope="row">Card/No</th>
+    <td width="144"><label>
+      <input type="text" name="textfield" class="form-control"/>
+    </label></td>
+    <td width="99"><label>
+      <input type="submit" name="Submit" value="Search" />
+    </label></td>
+  </tr>
+</table>
+<table class="table table-active">
+  <tr>
+    <th width="31" scope="col">sl.no</th>
+    <th width="28" scope="col">card No</th>
+    <th width="31" scope="col">Validity</th>
+   <th></th>
+  </tr>
+     {% for i in data %}
+  <tr>
+
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.PLAN.Plan }}<br><img src="{{ i.PLAN.Photo }}" accept="image/*" height="50px" width="50px"></td>
+    <td>&nbsp;{{ i.Sdate }}</td>
+    <td>{{ i.Edate }}</td>
+  </tr>
+     {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}

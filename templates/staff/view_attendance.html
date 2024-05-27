@@ -1,0 +1,36 @@
+{% extends 'staff/staffindex1.html' %}
+{% block body%}
+<body>
+<form action="/myapp/staffviewCertificate_post/" method="post">
+{% csrf_token %}
+{# <table class="table table-active">#}
+{#    <center><h3><b>ONLINE SERVICES</b></h3></center></table> <br><br>#}
+{#<table class="table table-active">#}
+{#  <tr>#}
+{#    <th width="144" scope="row"><label>#}
+{#      <input type="text" name="textfield" placeholder="category" class="form-control" />#}
+{#    </label></th>#}
+{#    <td width="105"><label>#}
+{#      <input type="submit" name="Submit" class="btn btn-style-primary" value="Search"  />#}
+{#    </label>#}
+{#  </tr>#}
+{#</table>#}
+<table class="table table-bordered">
+  <tr>
+    <th width="31" scope="row">sl.no</th>
+    <th width="54">Date </th>
+      <th width="45">Attendance</th>
+      <th width="45">Member</th>
+  </tr>
+  <tr>
+      {% for i in data %}
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.Date }}</td>
+    <td>{{ i.Status }}</td>
+    <td>{{ i.JOBCARDMEMMBERS.Name }}</td>
+  </tr>
+      {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}

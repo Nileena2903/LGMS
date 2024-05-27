@@ -1,0 +1,45 @@
+{% extends 'staff/staffindex1.html' %}
+{% block body%}
+
+<body>
+<form action="/myapp/viewjobcarddetails_post/" method="post">
+{% csrf_token %}
+ <center><h3><b>JOBCARD DETAILS</b></h3></center></table> <br><br>
+
+<table class="table table-active">
+  <tr><th></th>
+            <td> <img src="{{ data2.0.JOBCARD.JOBCARDREQUEST.Photo }}" height="100" width="100" alt=""/>
+</td>
+        </tr>
+        <tr><th>Head of the House</th>
+            <td>{{ data2.0.JOBCARD.JOBCARDREQUEST.Head }}
+</td></tr>
+         <tr><th>Rationcar Number</th>
+            <td>{{ data2.0.JOBCARD.JOBCARDREQUEST.Rationcard }}
+</table>
+<table class="table table-hover">
+  <tr colspan="6"><th>Members</th></tr>
+    <tr>
+    <th width="32" scope="row">sl.no</th>
+    <th width="39">Name</th>
+    <th width="39">Gender</th>
+    <th width="34">Age</th>
+    <th width="34">Adhar Number</th>
+    <th width="47">Relation</th>
+
+  </tr>
+     {% for i in data2 %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.Name }}<br><img src="{{ i.Photo }}" height="50px" width="50px"> </td>
+    <td>{{ i.Gender }}</td>
+    <td>{{ i.Age }}</td>
+      <td>{{ i.Adharno }}</td>
+    <td>{{ i.Relation }}</td>
+  </tr>
+     {% endfor %}
+</table>
+
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'staff/staffindex1.html' %}
+{% block body%}
+
+<body>
+<form action="/myapp//" method="post">
+{% csrf_token %}
+ <table class="table table-active">
+    <center><h3><b>WORK REQUESTS</b></h3></center></table> <br><br>
+<table  class="table table-active">
+  <tr>
+    <td><a href="/myapp/staff_viewworkrequestverified/" class="btn btn-style-white">Verified Works</a></td>
+
+{#    </label></th><td><a href="/myapp/addWard/" class="btn btn-style-white">Add</a></td>#}
+  </tr>
+</table>
+<table  class="table table-bordered" >
+  <tr>
+    <th width="31" scope="row">sl.no</th>
+    <th width="54">Ward </th>
+    <th width="39">Employee Mate</th>
+{#    <td width="55"><p>Ward Member</p>      </td>#}
+  </tr>
+    {% for i in data %}
+
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td style="font-weight: bold;">{{ i.Wnum }}<br>{{ i.Wname }}</td>
+    <td style="font-weight: bold;">{{ i.uu }}</td>
+    <td><a href="/myapp/approvedstaffviewworkreqapply/{{ i.id }}" class="btn btn-outline-dark">Work Applications</a></td>
+    <td><a href="/myapp/staff_viewemployeesreq/{{ i.wid }}" class=" btn btn-outline-primary">Workers</a></td>
+{#    <td><a href="/myapp/staff_approvewrkrequest/{{ i.id }}" class=" btn btn-success">Approve</a></td>#}
+
+   <td width="40">
+{#            {% if i.Status == "pending" %}#}
+{#            <a href="/myapp/staff_approvewrkrequest/{{ i.id }}"class="btn btn-outline-dark">Approve</a>#}
+{##}
+{##}
+{#                {{ i.Status }}#}
+{#            {% elif i.status == "verified" %}#}
+{#            {% else %}#}
+{#                 <a href="/myapp/staff_viewattendance/{{ i.id }}"class="btn btn-outline-dark"> Attendance</a>#}{{ i.Status }}
+{##}
+{#            {% endif %}#}
+
+      </td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+
+{% endblock %}

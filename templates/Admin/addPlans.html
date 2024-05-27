@@ -1,0 +1,47 @@
+{% extends 'Admin/Adminindex1.html' %}
+{% block body%}
+
+<body>
+<form action="/myapp/addPlans_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+     <table class="table table-active">
+    <center><h3><b>ADD PLAN</b></h3></center></table> <br><br>
+  <table class="table table-hover">
+    <tr>
+      <th scope="row">Plan </th>
+      <td><label>
+        <input type="text"class="form-control" onchange="capitalizeFirstLetter(this)" required  name="plan" c />
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td><label>
+        <textarea name="description" class="form-control" onchange="capitalizeFirstLetter(this)" required ></textarea>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">Photo</th>
+      <td><label>
+        <input type="file" name="file" accept="image/*"required />
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Add" class="btn btn-outline-success" /></td>
+    </tr>
+  </table>
+
+
+  <label></label>
+</form>
+<script>
+    function capitalizeFirstLetter(inputElement) {
+        // Get the value of the input field
+        var value = inputElement.value;
+        // Capitalize the first letter
+        var capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+        // Update the input field with the capitalized value
+        inputElement.value = capitalizedValue;
+    }
+</script>
+</body>
+{% endblock %}

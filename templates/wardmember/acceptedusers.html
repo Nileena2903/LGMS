@@ -1,0 +1,70 @@
+{% extends 'Admin/Adminindex1.html' %}
+{% block body%}
+<body>
+<form action="/myapp/acceptedUser_post/" method="post">
+{% csrf_token %}
+ <table class="table table-active">
+    <center><h3><b>REGISTERED USERS</b></h3></center></table> <br><br>
+<table class="table table-active">
+  <tr>
+       <th width="144" scope="row"><label>
+      <input type="text" placeholder="Name" name="textfield" class="form-control" />
+    </label></th>
+{#    <th width="144" scope="row"><label>#}
+{#      <select name="textfield" id="sel" class="form-control">#}
+{#      {% if sel %}#}
+{#          <option hidden value="{{ sel }}">{{ selward }}</option>#}
+{#      {% endif %}#}
+{#          {% for i in data2 %}#}
+{#          <option value="{{ i.id }}">{{ i.Wname }}</option>#}
+{#          {% endfor %}#}
+{#      </select>#}
+{#    </label></th>#}
+    <td width="271"><label>
+      <input type="submit" name="Submit" value="Search"class="btn btn-style-primary" />
+    </label></td>
+  </tr>
+</table>
+<table class="table table-hover">
+  <tr>
+    <th width="32" scope="row">sl.no</th>
+    <th width="39">Name</th>
+    <th width="39">phone</th>
+    <th width="34">Email</th>
+    <th width="34">DOB</th>
+    <th width="47">Gender</th>
+    <th width="53">Address</th>
+      <th width="47">Social Category</th>
+    <th width="34">Ward</th>
+
+
+  </tr>
+     {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.Uname }}<br><img src="{{ i.Photo }}" height="50px" width="50px"> </td>
+    <td>{{ i.Phno }}</td>
+    <td>{{ i.Email }}</td>
+      <td>{{ i.Dob }}</td>
+    <td>{{ i.Gender }}</td>
+    <td>{{ i.Hname }},<br>{{ i.Place }},<br>{{ i.Post }},<br>{{ i.Pin }}</td>
+    <td>{{ i.Sc }}</td>
+    <td>{{ i.WARD.Wname }},<br>{{ i.WARD.Wnum }}</td>
+
+  </tr>
+     {% endfor %}
+</table>
+</form>
+</body>
+<script>
+var select = document.querySelector('#sel'),
+    input = document.querySelector('input[type="submit"]');
+select.addEventListener('change',function(){
+{#    alert('changed');#}
+});
+input.addEventListener('click',function(){
+{#    select.value = 2;#}
+    select.dispatchEvent(new Event('change'));
+});
+</script>
+{% endblock %}

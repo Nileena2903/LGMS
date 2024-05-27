@@ -1,0 +1,52 @@
+{% extends 'Admin/Adminindex1.html' %}
+{% block body%}
+<body>
+<form action="/myapp/addWard_post/" method="post">
+    {% csrf_token %}
+     <table class="table table-active">
+    <center><h3><b>ADD WARD</b></h3></center></table> <br><br>
+<table class="table table-active">
+  <tr>
+    <th scope="row">Ward Name</th>
+    <td><label>
+      <input type="text" name="textfield22" class="form-control" required/>
+    </label></td>
+  </tr>
+  <tr>
+    <th scope="row">Ward Number </th>
+    <td><select name="select2"  class="form-control" required>
+        <option>1</option>
+         <option>2</option>
+         <option>3</option>
+         <option>4</option>
+        <option>5</option>
+         <option>6</option>
+        <option>7</option>
+         <option>8</option>
+         <option>9</option>
+         <option>10</option>
+         <option>11</option>
+         <option>12</option>
+         <option>13</option>
+         <option>14</option>
+         <option>15</option>
+         <option>16</option>
+         <option>17</option>
+         <option>18</option>
+    </select></td>
+  </tr>
+{#   <tr>#}
+{#    <th scope="row">Ward Member </th>#}
+{#    <td><select name="select">#}
+{#    </select></td>#}
+{#  </tr>#}
+  <tr>
+    <td colspan="2" scope="row" align="center">
+      <input type="submit" name="Submit" value="Add" class="btn btn-outline-success" />
+   </td>
+    </tr>
+</table>
+
+</form>
+</body>
+{% endblock %}
